@@ -1,73 +1,158 @@
 body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background: linear-gradient(120deg, #ff9a9e, #fad0c4);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-        }
-
-        h1 {
-            color: #fff;
-            text-shadow: 2px 2px 5px #ff6f61;
-            margin-bottom: 40px;
-        }
-
-        form button {
-            padding: 20px 50px;
-            font-size: 24px;
-            font-weight: bold;
-            cursor: pointer;
-            border: none;
-            border-radius: 15px;
-            background: #ff6f61;
-            color: #fff;
-            box-shadow: 0 5px #d94c4c;
-            transition: all 0.2s;
-        }
-
-        form button:hover {
-            background: #ff856f;
-            transform: translateY(-3px);
-            box-shadow: 0 8px #d94c4c;
-        }
-
-        #joke {
-            margin-top: 40px;
-            font-size: 28px;
-            font-weight: bold;
-            color: #fff;
-            text-align: center;
-            max-width: 600px;
-            padding: 20px;
-            background: rgba(0,0,0,0.3);
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            margin-right: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            color: #fff;
-            background: #ff6f61;
-            padding: 10px 20px;
-            border-radius: 10px;
-            transition: all 0.2s;
-        }
-
-        a:hover {
-            background: #ff856f;
-            transform: translateY(-2px);
-        }
-        .nav-links {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(120deg, #ff9a9e, #fad0c4);
     display: flex;
-    gap: 15px; /* aralarında boşluk */
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+header {
+    margin-top: 30px;
+    text-align: center;
+    color: #fff;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #fff;
+    text-shadow: 2px 2px 5px #ff6f61;
+}
+
+.joke-box {
+    position: relative;
+    margin-top: 40px;
+    max-width: 600px;
+    width: 90%;
+    padding: 20px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-align: center;
+    color: #fff;
+}
+
+.joke-box p {
+    margin-bottom: 30px; 
+}
+
+.vote-container {
+    position: absolute;
+    left: 50%;             
+    bottom: 5px; 
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+
+
+.joke-box .png {
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    width: 80px;
+    height: 80px;
+    z-index: 0; 
+    opacity: 0.8;
+}
+
+.joke-box .png img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    cursor: pointer;
+    
+}
+
+.joke-box .png img:hover {
+    transform: scale(1.05); 
+}
+
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+
+.vote-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 0.5rem;
+    gap: 0.5rem;
+}
+
+.vote-button {
+    background-color: #ffc107;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.15s ease, background-color 0.15s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.vote-button:hover {
+    transform: scale(1.1);
+    background-color: #ffb300;
+}
+
+.vote-count {
+    font-size: 1rem;
+    color: #495057;
+    font-weight: 500;
+}
+
+form button {
+    padding: 20px 50px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    background: #ff6f61;
+    color: #fff;
+    box-shadow: 0 5px #d94c4c;
+    transition: all 0.2s;
+}
+
+form button:hover {
+    background: #ff856f;
+    transform: translateY(-3px);
+    box-shadow: 0 8px #d94c4c;
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    margin-right: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #fff;
+    background: #ff6f61;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: all 0.2s;
+}
+
+a:hover {
+    background: #ff856f;
+    transform: translateY(-2px);
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
     margin-top: 30px;
 }
 

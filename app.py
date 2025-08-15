@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 import requests
 import random
+import os
 
 app = Flask(__name__)
 
@@ -10,10 +11,18 @@ def init_db():
     conn = sqlite3.connect('messages.db')
     c = conn.cursor()
     c.execute('''
-        CREATE TABLE IF NOT EXISTS messages
-            (id INTEGER PRIMARY KEY AUTOINCREMENT,
+        CREATE TABLE IF NOT EXISTS messages (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             joke TEXT,
-            votes INTEGER DEFAULT 0)  
+            votes INTEGER DEFAULT 0
+        )
+    ''')
+    c.execute('''
+        CREATE TABLE IF NOT EXISTS votes (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            message_id INTEGER,
+            ip TEXT
+        )
     ''')
     conn.commit()
     conn.close()
@@ -22,8 +31,11 @@ init_db()
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('smile.html')
 
+@app.route('/index')
+def home():
+    return render_template('index.html')
 
 @app.route('/smile', methods=['GET', 'POST'])
 def smile():
@@ -44,9 +56,9 @@ def smile():
 
         conn = sqlite3.connect('messages.db')
         c = conn.cursor()
-        c.execute('INSERT INTO messages (joke, votes) VALUES (?, ?)', (joke, 0))  # <-- votes
+        c.execute('INSERT INTO messages (joke, votes) VALUES (?, ?)', (joke, 0))  #vote
         conn.commit()
-        last_id = c.lastrowid
+        latest_id = c.lastrowid
         conn.close()
     
     return render_template('smile.html', joke=joke, latest_id=latest_id, latest_votes=latest_votes)
@@ -70,23 +82,14 @@ def vote(message_id):
 def all_messages():
     conn = sqlite3.connect('messages.db')
     c = conn.cursor()
-    c.execute('SELECT * FROM messages ORDER BY votes DESC')  # <-- votes
+    c.execute('SELECT * FROM messages ORDER BY votes DESC') #vote
     messages = c.fetchall()
     conn.close()
     return render_template('all.html', messages=messages)
-
-@app.route('/history')
-def history():
-    conn = sqlite3.connect('messages.db')
-    c = conn.cursor()
-    c.execute('SELECT * FROM messages')
-    messages = c.fetchall()
-    conn.close()
-    return render_template('history.html', messages=messages)
 
 @app.route('/about')
 def about():
     return render_template('about.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))

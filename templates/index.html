@@ -3,16 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberSec</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Easter Egg</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='IndexPage.css') }}">
 </head>
 <body>
-    nav>
-        <a href="{{ url_for('index') }}">Anasayfa</a>
+    <nav>
+        <a href="{{ url_for('smile') }}">Back to Smiley</a>
     </nav>
+
     <div class="container">
-        {% block content %}
-        {% endblock %}
-    
+        <h1>Welcome to the Index Page!</h1>
+        <p>Type the secret code to discover a hidden surprise!</p>
+    </div>
+
+    <div id="easter-egg">🎉 You found the Easter Egg!</div>
+
+    <script>
+        const secretCode = ['s','m','i','l','e'];
+        let codeIndex = 0;
+
+        document.addEventListener('keydown', (e) => {
+            if(e.key.toLowerCase() === secretCode[codeIndex]){
+                codeIndex++;
+                if(codeIndex === secretCode.length){
+                    const egg = document.getElementById('easter-egg');
+                    egg.style.display = 'block';
+                    setTimeout(() => { egg.style.display = 'none'; }, 2500);
+                    codeIndex = 0;
+                }
+            } else {
+                codeIndex = 0; 
+            }
+        });
+    </script>
 </body>
 </html>

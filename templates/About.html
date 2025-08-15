@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Smiley Surprise</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='AboutPage.css') }}">
+</head>
+<body>
+
+<header>
+    <h1>About Smiley Surprise</h1>
+</header>
+
+<div class="content">
+    <p>Welcome to <strong>Smiley Surprise</strong>! 😄</p>
+    <p>This is a fun joke-sharing platform where you can click to get a random joke and see how many people liked it. It's designed to bring a smile to your day!</p>
+    <p>Developed with ❤️ for anyone who loves a good laugh. All jokes are fetched from a public API and votes are tracked to show the most popular ones.</p>
+    <p>Feel free to explore, enjoy, and share the laughs!</p>
+</div>
+
+<a class="back" href="{{ url_for('smile') }}">Back to Home</a>
+
+</body>
+</html>

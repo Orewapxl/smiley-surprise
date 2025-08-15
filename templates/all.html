@@ -3,14 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>All Jokes</title>
-<style>
-    body { font-family: Arial; padding:50px; background:#f0f0f0; }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { border:1px solid #333; padding:10px; text-align:left; }
-    th { background:#007bff; color:white; }
-    a.vote { background:#ff6f61; color:white; padding:5px 10px; border-radius:5px; text-decoration:none; }
-    a.vote:hover { background:#ff856f; }
-</style>
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='AllPage.css') }}">
 </head>
 <body>
 <h1>All Jokes (Top Votes First)</h1>
@@ -19,17 +13,16 @@
     <th>ID</th>
     <th>Joke</th>
     <th>Votes</th>
-    <th>Vote</th>
 </tr>
 {% for msg in messages %}
 <tr>
     <td>{{ msg[0] }}</td>
     <td>{{ msg[1] }}</td>
-    <td>{{ msg[2] }}</td>
-    <td><a class="vote" href="{{ url_for('vote', message_id=msg[0]) }}">👍</a></td>
+    <td class="vote-count">{{ msg[2] }}</td>
 </tr>
 {% endfor %}
 </table>
-<a href="{{ url_for('smile') }}">Back to Smiley</a>
+
+<a class="back" href="{{ url_for('smile') }}">Back to Smiley</a>
 </body>
 </html>

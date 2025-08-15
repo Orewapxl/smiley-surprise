@@ -1,0 +1,49 @@
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            background: linear-gradient(45deg, #ff6f61, #ffb347);
+            padding: 10px 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(45deg, #ff856f, #ffc97f);
+            box-shadow: 0 5px #d94c4c;
+        }
+
+        .container {
+            margin-top: 50px;
+            text-align: center;
+            color: #fff;
+        }
+
+        #easter-egg {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 1.8rem;
+            display: none;
+            color: #fff;
+            background: rgba(0,0,0,0.5);
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            transition: all 0.5s ease;
+        }
