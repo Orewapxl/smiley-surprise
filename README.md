@@ -1,5 +1,6 @@
 # Smiley Surprise
-  <img width="225" height="225" alt="images" src="https://github.com/user-attachments/assets/4a66e70b-4930-4de1-a3a6-4e3b501a23a4" />
+<img width="1904" height="912" alt="resim" src="https://github.com/user-attachments/assets/816f6ba2-3427-47d7-812a-ee0b2146022a" />
+
 
 **Smiley Surprise** is a fun web app where users can get random jokes, vote on them, and discover hidden easter eggs. Built for entertainment at events or just for fun. Some content and ideas were assisted by AI.
 
