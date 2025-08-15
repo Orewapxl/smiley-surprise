@@ -22,7 +22,8 @@
         <img id="frog" src="{{ url_for('static', filename='pepe.png') }}" alt="png">
     </div>
 
-    <form method="post">
+    <!-- Form artık /smile route'una POST atacak -->
+    <form method="post" action="{{ url_for('smile') }}">
         <button type="submit">Click ME!!!!</button>
     </form>
 
@@ -42,16 +43,12 @@ const frog = document.getElementById('frog');
 
 frog.addEventListener('click', (e) => {
     e.preventDefault();
-
     frog.style.animation = 'spin 0.5s linear infinite';
-
     setTimeout(() => {
         frog.style.animation = 'spin 2s ease-out 1';
     }, 1200);
 });
 </script>
-
-
 
 </body>
 </html>
