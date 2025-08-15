@@ -29,7 +29,7 @@ def init_db():
 init_db()
 #//////
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('smile.html')
 
